@@ -11,9 +11,9 @@ namespace Persistence
         {
             _db = db;
         }
-        public async Task<bool> IsExistAsync(string categoryId)
+        public async Task<bool> IsExistAsync(string categoryId, CancellationToken cancellationToken)
         {
-            return await this._db.categories.AnyAsync(c => c.Id == categoryId);
+            return await this._db.categories.AnyAsync(c => c.Id == categoryId, cancellationToken);
         }
     }
 }

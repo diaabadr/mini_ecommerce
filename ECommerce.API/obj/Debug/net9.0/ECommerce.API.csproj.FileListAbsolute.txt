@@ -178,3 +178,5 @@ C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\ref\ECommerce.API.dll
 C:\projects\mini_ecommerce\ECommerce.API\bin\Debug\net9.0\FluentValidation.dll
 C:\projects\mini_ecommerce\ECommerce.API\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\ECommerce.API.sourcelink.json
+C:\projects\mini_ecommerce\ECommerce.API\bin\Debug\net9.0\MediatR.dll
+C:\projects\mini_ecommerce\ECommerce.API\bin\Debug\net9.0\MediatR.Contracts.dll

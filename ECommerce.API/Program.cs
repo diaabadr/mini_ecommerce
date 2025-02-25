@@ -1,5 +1,5 @@
 using Application.DTOs;
-using Application.Service;
+using Application.Products.Queries;
 using Application.Validators;
 using Domain;
 using ECommerce.API.Middlewares;
@@ -27,10 +27,10 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IValidator<CreateProductDto>, CreateProductValidator>();
 builder.Services.AddScoped<IValidator<UpdateProductDto>, UpdateProductValidator>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining<GetProductList.Handler>());
 var app = builder.Build();
 
 app.MapControllers();

@@ -2,6 +2,6 @@
 {
     public interface ICategoryRepository
     {
-        Task<bool> IsExistAsync(string addingCategoryId);
+        Task<bool> IsExistAsync(string addingCategoryId, CancellationToken cancellationToken);
     }
 }

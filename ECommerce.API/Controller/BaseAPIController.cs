@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.API.Controllers
@@ -7,6 +8,11 @@ namespace ECommerce.API.Controllers
     [Route("api/[controller]")]
     public class BaseAPIController : ControllerBase
     {
+        private IMediator _mediator;
+        protected IMediator Mediator =>
+        _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>()
+        ?? throw new InvalidOperationException("IMediator service is not available");
+
         protected IActionResult HandleResponse<T>(ServiceResponse<T> response)
         {
             if (response.Success)

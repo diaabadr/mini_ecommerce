@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "dkDU8WmwEeQ=",
+  "success": true,
+  "projectFilePath": "C:\\projects\\mini_ecommerce\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\diaab\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\diaab\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\diaab\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\diaab\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

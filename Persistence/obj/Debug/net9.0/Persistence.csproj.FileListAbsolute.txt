@@ -1,0 +1,17 @@
+C:\projects\mini_ecommerce\Persistence\bin\Debug\net9.0\Persistence.deps.json
+C:\projects\mini_ecommerce\Persistence\bin\Debug\net9.0\Persistence.runtimeconfig.json
+C:\projects\mini_ecommerce\Persistence\bin\Debug\net9.0\Persistence.dll
+C:\projects\mini_ecommerce\Persistence\bin\Debug\net9.0\Persistence.pdb
+C:\projects\mini_ecommerce\Persistence\bin\Debug\net9.0\Domain.dll
+C:\projects\mini_ecommerce\Persistence\bin\Debug\net9.0\Domain.pdb
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.csproj.AssemblyReference.cache
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.AssemblyInfoInputs.cache
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.AssemblyInfo.cs
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.csproj.CoreCompileInputs.cache
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persiste.61C28332.Up2Date
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.dll
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\refint\Persistence.dll
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.pdb
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.genruntimeconfig.cache
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\ref\Persistence.dll

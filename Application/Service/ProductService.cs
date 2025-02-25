@@ -61,14 +61,22 @@ namespace Application.Service
 
         }
 
-        public async Task<ServiceResponse<string>> UpdateProduct(string id, Product product)
+        public async Task<ServiceResponse<string>> UpdateProduct(string id, UpdateProductDto dto)
         {
-            var isExist = await this._categoryRepo.IsExistAsync(product.CategoryId);
+            var isExist = await this._categoryRepo.IsExistAsync(dto.CategoryId);
             if (!isExist)
             {
                 return ServiceResponse<string>.
                     ErrorResponse(ErrorCodes.CategoryDoesNotExist, "Category does not exist", 400);
             }
+
+            var product = new Product
+            {
+                Name = dto.Name,
+                CategoryId = dto.CategoryId,
+                Price = dto.Price,
+                StockQuanitty = dto.StockQuanitty
+            };
 
             var affectedRows = await this._productRepo.UpdateProductAsync(id, product);
             if (affectedRows == 0)

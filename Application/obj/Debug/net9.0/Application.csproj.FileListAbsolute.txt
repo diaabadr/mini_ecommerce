@@ -15,3 +15,4 @@ C:\projects\mini_ecommerce\Application\obj\Debug\net9.0\Application.dll
 C:\projects\mini_ecommerce\Application\obj\Debug\net9.0\refint\Application.dll
 C:\projects\mini_ecommerce\Application\obj\Debug\net9.0\Application.pdb
 C:\projects\mini_ecommerce\Application\obj\Debug\net9.0\ref\Application.dll
+C:\projects\mini_ecommerce\Application\obj\Debug\net9.0\Application.sourcelink.json

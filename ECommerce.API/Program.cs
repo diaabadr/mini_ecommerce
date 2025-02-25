@@ -29,6 +29,7 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IValidator<CreateProductDto>, CreateProductValidator>();
+builder.Services.AddScoped<IValidator<UpdateProductDto>, UpdateProductValidator>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 var app = builder.Build();
 

@@ -30,7 +30,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product)
+        public async Task<IActionResult> UpdateProduct(string id, [FromBody] UpdateProductDto product)
         {
             var res = await this._productService.UpdateProduct(id, product);
 

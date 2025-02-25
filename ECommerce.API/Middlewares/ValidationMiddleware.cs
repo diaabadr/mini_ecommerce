@@ -26,7 +26,6 @@ namespace ECommerce.API.Middlewares
                     return;
                 }
 
-                // Get the DTO type from the action parameters
                 var parameter = controllerActionDescriptor.Parameters.FirstOrDefault(p => p.ParameterType.Name.EndsWith("Dto"));
                 if (parameter == null)
                 {

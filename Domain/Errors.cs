@@ -10,5 +10,8 @@
         public const string ProductNameShort = "NAME_IS_SHORTER_THAN_2";
         public const string PriceIsLow = "PRICE_IS_LOW";
         public const string NegativeQunatity = "QUANTITY_CANNOT_BE_NEGATIVE";
+
+        public const string SupplierNotFound = "SUPPLIER_NOT_FOUND";
+        public const string ProductSupplierExist = "PRODUCT_SUPPLIER_EXIST";
     }
 }

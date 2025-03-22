@@ -1,7 +1,10 @@
 using System;
 using Application.DTOs;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistence;
 
@@ -9,15 +12,17 @@ namespace Application.Products.Queries
 {
     public class GetProductList
     {
-        public class Query : IRequest<ServiceResponse<List<Product>>> { }
+        public class Query : IRequest<ServiceResponse<List<ProductDto>>> { }
 
-        public class Handler(IProductRepository productRepo) : IRequestHandler<Query, ServiceResponse<List<Product>>>
+        public class Handler(AppDbContext dbContext, IMapper mapper) : IRequestHandler<Query, ServiceResponse<List<ProductDto>>>
         {
 
-            public async Task<ServiceResponse<List<Product>>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<ServiceResponse<List<ProductDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var products = await productRepo.GetAllProducts(cancellationToken);
-                return ServiceResponse<List<Product>>.SuccessResponse(products, 200);
+                var products = await dbContext.products.AsNoTracking().ProjectTo<ProductDto>(mapper.ConfigurationProvider)
+                .ToListAsync(cancellationToken);
+
+                return ServiceResponse<List<ProductDto>>.SuccessResponse(products, 200);
             }
         }
     }

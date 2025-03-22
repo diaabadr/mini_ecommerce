@@ -16,5 +16,12 @@ namespace Domain.Entities
         public string CategoryId { get; set; }
 
         public Category? Category { get; set; }
+
+        public ICollection<ProductSupplier> Suppliers { get; set; } = [];
+
+        public string CreatorId { get; set; }
+        public User? Creator { get; set; }
+
+        public ICollection<Review> Reviews { get; set; } = [];
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using Application.DTOs;
+using Application.Interfaces;
+using AutoMapper;
 using Domain.Common;
 using Domain.Entities;
 using MediatR;
@@ -9,22 +11,25 @@ namespace Application.Products.Commands;
 
 public class CreateProduct
 {
-    public class Command : IRequest<ServiceResponse<Product>>
+    public class Command : IRequest<ServiceResponse<ProductDto>>
     {
         public required CreateProductDto Dto { get; set; }
     }
 
-    public class Handler(IProductRepository productRepo, ICategoryRepository categoryRepo) : IRequestHandler<Command, ServiceResponse<Product>>
+    public class Handler(IProductRepository productRepo, ICategoryRepository categoryRepo,
+    IUserAccessor userAccessor, IMapper mapper)
+     : IRequestHandler<Command, ServiceResponse<ProductDto>>
     {
 
-        public async Task<ServiceResponse<Product>> Handle(Command request, CancellationToken cancellationToken)
+        public async Task<ServiceResponse<ProductDto>> Handle(Command request, CancellationToken cancellationToken)
         {
+            var user = await userAccessor.GetUserAsync();
             var dto = request.Dto;
 
             var isExist = await categoryRepo.IsExistAsync(dto.CategoryId, cancellationToken);
             if (!isExist)
             {
-                return ServiceResponse<Product>.
+                return ServiceResponse<ProductDto>.
                     ErrorResponse(ErrorCodes.CategoryDoesNotExist, "category not found", 400);
             }
 
@@ -33,17 +38,17 @@ public class CreateProduct
                 Name = dto.Name,
                 CategoryId = dto.CategoryId,
                 Price = dto.Price,
-                StockQuanitty = dto.StockQuanitty
+                StockQuanitty = dto.StockQuanitty,
+                CreatorId = user.Id
             };
-
-            var Product = await productRepo.AddProductAsync(product, cancellationToken);
+            product = await productRepo.AddProductAsync(product, user.Id, cancellationToken);
             if (product == null)
             {
-                return ServiceResponse<Product>.
+                return ServiceResponse<ProductDto>.
                     ErrorResponse(ErrorCodes.InternalServerError, "internal server error", 500);
             }
 
-            return ServiceResponse<Product>.SuccessResponse(product, 201);
+            return ServiceResponse<ProductDto>.SuccessResponse(mapper.Map<ProductDto>(product), 201);
         }
     }
 }

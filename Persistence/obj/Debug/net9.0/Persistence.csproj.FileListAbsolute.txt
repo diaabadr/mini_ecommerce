@@ -9,10 +9,10 @@ C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.GeneratedMSB
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.AssemblyInfoInputs.cache
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.AssemblyInfo.cs
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.csproj.CoreCompileInputs.cache
+C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.sourcelink.json
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persiste.61C28332.Up2Date
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.dll
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\refint\Persistence.dll
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.pdb
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.genruntimeconfig.cache
 C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\ref\Persistence.dll
-C:\projects\mini_ecommerce\Persistence\obj\Debug\net9.0\Persistence.sourcelink.json

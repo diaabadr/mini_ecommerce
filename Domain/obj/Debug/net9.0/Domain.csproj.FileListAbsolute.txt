@@ -6,8 +6,8 @@ C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.GeneratedMSBuildEditor
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.AssemblyInfoInputs.cache
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.AssemblyInfo.cs
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.csproj.CoreCompileInputs.cache
+C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.sourcelink.json
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.dll
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\refint\Domain.dll
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.pdb
 C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\ref\Domain.dll
-C:\projects\mini_ecommerce\Domain\obj\Debug\net9.0\Domain.sourcelink.json

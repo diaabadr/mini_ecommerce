@@ -1,5 +1,6 @@
 using System;
 using Application.DTOs;
+using Application.Interfaces;
 using Domain.Common;
 using Domain.Entities;
 using MediatR;
@@ -16,7 +17,8 @@ public class UpdateProduct
         public required UpdateProductDto Dto { get; set; }
     }
 
-    public class Handler(IProductRepository productRepo, ICategoryRepository categoryRepo) : IRequestHandler<Command, ServiceResponse<string>>
+    public class Handler(IProductRepository productRepo, ICategoryRepository categoryRepo,
+    IUserAccessor userAccessor) : IRequestHandler<Command, ServiceResponse<string>>
     {
         public async Task<ServiceResponse<string>> Handle(Command request, CancellationToken cancellationToken)
         {
@@ -27,12 +29,13 @@ public class UpdateProduct
                     ErrorResponse(ErrorCodes.CategoryDoesNotExist, "Category does not exist", 400);
             }
 
+            var user = await userAccessor.GetUserAsync();
             var product = new Product
             {
                 Name = request.Dto.Name,
                 CategoryId = request.Dto.CategoryId,
                 Price = request.Dto.Price,
-                StockQuanitty = request.Dto.StockQuanitty
+                StockQuanitty = request.Dto.StockQuanitty,
             };
 
             var affectedRows = await productRepo.UpdateProductAsync(request.Id, product, cancellationToken);
@@ -41,7 +44,7 @@ public class UpdateProduct
                 return ServiceResponse<string>.ErrorResponse(ErrorCodes.ProductNotFound, "product not found", 400);
             }
 
-            return ServiceResponse<string>.SuccessResponse("updated successfully", 204);
+            return ServiceResponse<string>.SuccessResponse("updated successfully", 200);
         }
     }
 

@@ -10,6 +10,5 @@ namespace Application.DTOs
         public int StockQuanitty { get; set; }
 
         public string CategoryId { get; set; } = "";
-
     }
 }

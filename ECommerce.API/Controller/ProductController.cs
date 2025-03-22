@@ -3,6 +3,7 @@ using Application.Products.Commands;
 using Application.Products.Queries;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence;
 
@@ -28,6 +29,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpPut("{id}")]
+        // [Authorize(Policy = "IsProductCreator")]
         public async Task<IActionResult> UpdateProduct(string id, [FromBody] UpdateProductDto dto)
         {
             var res = await Mediator.Send(new UpdateProduct.Command { Id = id, Dto = dto });
@@ -35,6 +37,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "IsProductCreator")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
             var res = await Mediator.Send(new DeleteProduct.Command { Id = id });

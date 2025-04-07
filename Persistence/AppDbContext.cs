@@ -5,8 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class AppDbContext(DbContextOptions options) : IdentityDbContext<User>(options)
+    public class AppDbContext : IdentityDbContext<User>
     {
+
+        private readonly PrometheusDbInterceptor _interceptor;
+
+        public AppDbContext(DbContextOptions<AppDbContext> options, PrometheusDbInterceptor interceptor) : base(options)
+        {
+            _interceptor = interceptor;
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.AddInterceptors(_interceptor);
+        }
+
         public DbSet<Product> products { get; set; }
 
         public DbSet<Category> categories { get; set; }

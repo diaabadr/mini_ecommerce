@@ -213,4 +213,6 @@ C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\refint\ECommerce.API.d
 C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\ECommerce.API.pdb
 C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\ECommerce.API.genruntimeconfig.cache
 C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\ref\ECommerce.API.dll
+C:\projects\mini_ecommerce\ECommerce.API\bin\Debug\net9.0\Prometheus.NetStandard.dll
+C:\projects\mini_ecommerce\ECommerce.API\bin\Debug\net9.0\Prometheus.AspNetCore.dll
 C:\projects\mini_ecommerce\ECommerce.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

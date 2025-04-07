@@ -10,8 +10,10 @@ using Infrastructure.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Prometheus;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,11 +59,32 @@ builder.Services.AddAuthorization(opt =>
         policy.Requirements.Add(new IsCreatorRequirment());
     });
 });
+
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.AllowSynchronousIO = true;
+});
+builder.Services.AddSingleton<PrometheusDbInterceptor>();
+
+
 builder.Services.AddTransient<IAuthorizationHandler, IsCreatorRequirmentHandler>();
 var app = builder.Build();
 
 
 app.UseRouting();
+
+app.UseHttpMetrics(options =>
+{
+    options.RequestDuration.Enabled = true;
+    options.AddCustomLabel("route", context =>
+    {
+        var endpoint = context.GetEndpoint();
+        var routePattern = (endpoint as Microsoft.AspNetCore.Routing.RouteEndpoint)?.RoutePattern?.RawText;
+        return routePattern ?? "unknown";
+    });
+});
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -88,6 +111,9 @@ catch (Exception e)
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<ValidationMiddleware>();
+
+app.MapMetrics();
+
 app.MapControllers();
 
 app.UseHttpsRedirection();

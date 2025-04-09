@@ -15,11 +15,20 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Prometheus;
 using Serilog;
+using Serilog.Sinks.Elasticsearch;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console().CreateLogger();
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+    {
+        AutoRegisterTemplate = true,
+        IndexFormat = "ecommerce-server-logs-{0:yyyy.MM.dd}"
+    })
+    .CreateLogger();
 
 builder.Host.UseSerilog();
 
@@ -64,7 +73,6 @@ builder.Services.Configure<KestrelServerOptions>(options =>
 {
     options.AllowSynchronousIO = true;
 });
-builder.Services.AddSingleton<PrometheusDbInterceptor>();
 
 
 builder.Services.AddTransient<IAuthorizationHandler, IsCreatorRequirmentHandler>();
@@ -72,6 +80,8 @@ var app = builder.Build();
 
 
 app.UseRouting();
+
+app.UseMetricServer();
 
 app.UseHttpMetrics(options =>
 {

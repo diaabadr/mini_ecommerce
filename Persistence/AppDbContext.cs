@@ -8,15 +8,9 @@ namespace Persistence
     public class AppDbContext : IdentityDbContext<User>
     {
 
-        private readonly PrometheusDbInterceptor _interceptor;
 
-        public AppDbContext(DbContextOptions<AppDbContext> options, PrometheusDbInterceptor interceptor) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            _interceptor = interceptor;
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.AddInterceptors(_interceptor);
         }
 
         public DbSet<Product> products { get; set; }

@@ -13,5 +13,4 @@ namespace Persistence
                     Buckets = Histogram.ExponentialBuckets(0.001, 2, 10)
                 });
     }
-
 }
